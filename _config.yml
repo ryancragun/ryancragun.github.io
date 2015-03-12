@@ -1,0 +1,11 @@
+title: blog.ryan.ec
+name: blog.ryan.ec
+url: https://blog.ryan.ec
+description: Words about computering adventures
+permalink: /:year/:month/:day/:title/
+paginate: 10
+pygments: true
+exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']
+url: "http://yourdomain.com" # the base hostname & protocol for your site
+twitter_username: ryancragun
+github_username: ryancragun
