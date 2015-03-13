@@ -1,11 +1,10 @@
-title: blog.ryan.ec
 name: blog.ryan.ec
+title: blog.ryan.ec
 url: https://blog.ryan.ec
-description: Words about computering adventures
+description: strongly worded opinions about computering and other such nonsense
 permalink: /:year/:month/:day/:title/
-paginate: 10
-pygments: true
+paginate: 5
+highlighter: pygments
 exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']
-url: "http://yourdomain.com" # the base hostname & protocol for your site
 twitter_username: ryancragun
 github_username: ryancragun
