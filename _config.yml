@@ -8,3 +8,5 @@ highlighter: pygments
 exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']
 twitter_username: ryancragun
 github_username: ryancragun
+gems:
+  - jekyll-sitemap
