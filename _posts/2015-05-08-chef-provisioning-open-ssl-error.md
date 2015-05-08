@@ -26,7 +26,7 @@ have been a problem at all if my `chef-client` had been installed using the
 As as Ruby developer, I find myself using chruby to bounce between versions and
 so I was using Chef the old-school manual gem install way.  Big mistake.
 
-Rather than switch to the ChefDK and getting back to productive work, I decided to
+Rather than switch to the ChefDK and get back to productive work, I decided to
 hunt down the root cause.  After verifying that the latest OpenSSL version was
 installed and linked, my system gems were updated, and that I'd installed the
 latest security bundle from Apple, I figured it must be a ca-cacert issue.
