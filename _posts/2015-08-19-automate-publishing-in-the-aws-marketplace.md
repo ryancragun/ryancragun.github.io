@@ -7,13 +7,13 @@ categories: chef ruby open-source opscode amazon aws marketplace ami ec2 cloud
 
 At CHEF we recently started publishing the Chef Server along with it's Add-On's into
 the [AWS Marketplace][marketplace]. The documentation
-provided by Amazong was mostly limited to general guidelines and the rules of publishing.
+provided by Amazon was mostly limited to general guidelines and the rules of publishing.
 While it recommends building an automated process for publishing, it stops short
 of prescribing a repeatable way to build, test and publish AMI's into Marketplace.
 What I've done is build a Chef resource that will allow you to easily automate
-publishing your application into the AWS Marketplace. In this blog post we'll
+publishing your application into the AWS Marketplace. In this blog post I'll
 give an overview of the entire process of creating a cookbook for your application
-and using the `marketplace_ami` chef resource to automate the building and publishing
+and detail how to use the `marketplace_ami` resource to automate the building and publishing
 in Marketplace.
 
 ### Set up your workstation
@@ -217,8 +217,8 @@ marketplace_ami 'jackfruit-demo' do
 end
 {% endhighlight %} <p></p>
 
-In the example I used several but not all of the parameters that are
-available on the marketplace_image resource.  Feel free to change the values to
+In the example I used several but not of the `marketplace_image` resource's parameters.
+Feel free to change the values to
 reflect what you need.  If you omit parameters, the resource
 and sub-resources will attempt to guess sane values but I'd recommend being as
 explicit as possible to ensure a consistent and repeatable build.
