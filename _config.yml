@@ -1,12 +1,29 @@
 name: blog.ryan.ec
 title: blog.ryan.ec
+tagline: being paranoid as an act of good citizenship
 url: https://blog.ryan.ec
-description: strongly worded opinions about computering and other such nonsense
+description: Here lie ideas that have come and gone but hopefully did some good
 permalink: /:year/:month/:day/:title/
-paginate: 5
-highlighter: pygments
+paginate: 1
+highlighter: rouge
 exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']
 twitter_username: ryancragun
 github_username: ryancragun
+author:
+  name: Ryan Cragun
+  url: https://github.com/ryancragun
+  email: me@ryan.ec
+owner:
+  name: Ryan Cragun
+  avatar: me.png
+  twitter: ryancragun
+  github: ryancragun
 gems:
-  - jekyll-sitemap
+    - jekyll-paginate
+    - jemoji
+    - rouge
+    - kramdown
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge

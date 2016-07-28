@@ -30,23 +30,23 @@ that implements the Demo module. In the `Demo` module we're going to have a meth
 probably going to be doing something more complicated but we'll run with this
 example for simplicity.
 
-{% highlight ruby linenos %}
+```ruby
 # recipes/default.rb
 log Demo.foo
-{% endhighlight %} <p></p>
+```
 
-{% highlight ruby linenos %}
+```ruby
 # libraries/demo.rb
 module Demo
   def self.foo
     'bar'
   end
 end
-{% endhighlight %} <p></p>
+```
 
 Now write a ChefSpec test and attemp to stub `Demo.foo`
 
-{% highlight ruby linenos %}
+```ruby
 # spec/spec_helper.rb
 require_relative '../libraries/demo'
 require 'chefspec'
@@ -61,11 +61,11 @@ describe 'demo::default' do
     expect(chef_run).to write_log('override')
   end
 end
-{% endhighlight %} <p></p>
+```
 
 And run the test
 
-{% highlight bash %}
+```bash
 ryan@/tmp/demo(master):> bundle exec rspec spec/spec_helper.rb
 F
 
@@ -81,14 +81,14 @@ Failures:
 
 Finished in 0.09651 seconds (files took 1.5 seconds to load)
 1 example, 1 failure
-{% endhighlight %} <p></p>
+```
 
 Ut oh, what's going on here? The answer lies deep in the heart of the `chef-client`.
 When we call `.converge` on our ChefSpec runner we actually run through the entire
 chef-client compile and execute phases. During that setup we have to compile our
 cookbook which requires us to [load any library files][run_context] in the cookbook.
 
-{% highlight ruby linenos %}
+```ruby
 # lib/chef/run_context/cookbook_compiler.rb
 def load_libraries_from_cookbook(cookbook_name)
   files_in_cookbook_by_segment(cookbook_name, :libraries).each do |filename|
@@ -102,7 +102,7 @@ def load_libraries_from_cookbook(cookbook_name)
     end
   end
 end
-{% endhighlight %} <p></p>
+```
 
 You'll see there on line #6 that we call `Kernel.load` on each library file in the
 cookbook. Doing this will completely wipe out the stubs that we created on line #9
@@ -111,7 +111,7 @@ of our ChefSpec test.  So how do we fix this?
 If your library is only going to be used during converge time you can stub it by passing
 a block to `converge()` with the class stubs
 
-{% highlight ruby linenos %}
+```ruby
 # spec/spec_helper.rb
   let(:chef_run) do
     ChefSpec::SoloRunner.converge(described_recipe) do
@@ -123,14 +123,14 @@ a block to `converge()` with the class stubs
     expect(chef_run).to write_log('override')
   end
 end
-{% endhighlight %} <p></p>
+```
 
 That option won't work in our case because the library is being used at compile
 time for the name of the log resource.
 
 You could monkey patch the chef-client in a library and omit loading the library
 
-{% highlight ruby linenos %}
+```ruby
 # libraries/monkey_patches.rb
 def load_libraries_from_cookbook(cookbook_name)
   files_in_cookbook_by_segment(cookbook_name, :libraries).each do |filename|
@@ -144,32 +144,32 @@ def load_libraries_from_cookbook(cookbook_name)
     end
   end
 end
-{% endhighlight %} <p></p>
+```
 
 That would work but it's a nasty hack at best.  The cleanest option I've found is to
 write your library in a way that it won't be reloaded.
 
-{% highlight ruby linenos %}
+```ruby
 # libraries/demo.rb
 module Demo
   def self.foo
     'bar'
   end
 end unless defined?(Demo)
-{% endhighlight %} <p></p>
+```
 
 When the cookbook compiler tries to load the Demo library again it won't
 because we've previously loaded it in our `spec_helper.rb`
 
 If we run our tests again with the modified library we should see it pass!
 
-{% highlight bash %}
+```bash
 ryan@/tmp/demo(master):> bundle exec rspec spec/spec_helper.rb
 .
 
 Finished in 0.10684 seconds (files took 1.58 seconds to load)
 1 example, 0 failures
-{% endhighlight %} <p></p>
+```
 
 [chefspec]: https://github.com/sethvargo/chefspec
 [chefdk]: https://downloads.chef.io/chef-dk/
