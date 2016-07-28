@@ -1,24 +1,41 @@
 ---
 layout: default
 ---
-<article class="post">
 
-	{% if page.external-url %}
-		<h1>
-			<a href="{{ page.external-url }}">{{ page.title }}</a>
-			<a class="anchor" href="{{ page.url }}"><i class="icon-anchor"></i></a>
-		</h1>
-	{% else %}
-		<h1><a href="{{ page.url }}">{{ page.title }}</a></h1>
-	{% endif %}
+<div class="post">
+  <h1 class="post-title">{{ page.title }}</h1>
+  <span class="post-date">{{ page.date | date_to_string }}</span>
 
-	<div class="post-content">{{ content }}</div>
+  {{ content }}
 
-	<p class="meta">
-    Posted on <span class="postdate">{{ page.date | date: "%b %d, %Y" }}</span>
-    -
-    You can follow me on <a href="https://twitter.com/ryancragun">twitter</a> if you
-    found this usefull and want more like it in the future
-  </p>
+  <span class="social-icons">
+    <a href="https://twitter.com/share?text={{ page.title }}&amp;url={{ site.url }}{{ page.url }}&amp;via={{ site.owner.twitter }}" class="social-icons" target="_blank" title="Share on twitter">
+      <i class="fa fa-twitter meta"></i>
+    </a>
+    <a href="https://plus.google.com/share?url={{ site.url }}{{ page.url }}"  class="social-icons" target="_blank" title="Share on Google+">
+      <i class="fa fa-google-plus"></i>
+    </a>
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ site.url }}{{ page.url }}"  class="social-icons" target="_blank" title="Share on LinkedIn">
+      <i class="fa fa-linkedin"></i>
+    </a>
+    <a href="javascript:window.print()" class="social-icons" title="Printer friendly format">
+      <i class="fa fa-print"></i>
+    </a>
+  </span>
+</div>
 
-</article>
+<div class="related">
+  <h2>Possibly Similar Posts</h2>
+  <ul class="related-posts">
+    {% for post in site.related_posts limit:3 %}
+      <li>
+        <h3>
+          <a href="{{ site.baseurl }}{{ post.url }}">
+            {{ post.title }}
+            <small>{{ post.date | date_to_string }}</small>
+          </a>
+        </h3>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
