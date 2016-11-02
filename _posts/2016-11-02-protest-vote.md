@@ -7,7 +7,7 @@ categories: politics election trump clinton protest duverger two evils ranked-ch
 
 As Election Day draws near I've noticed a stark difference between this election
 and those of years past. During the Republican primaries support for Trump among
-conservatives swirled in the 10-15% range. After he won he managed to secured the
+conservatives swirled in the 10-15% range. After he won he managed to secure the
 votes of many in the remaining 85%. That's a fairly remarkable feat considering that
 the Republican party, who have long since proclaimed themselves the party of the
 family, selected a racist, homophobic, xenophobic, sexist, ignoramus as their
@@ -29,7 +29,7 @@ but extremely dangerous.
 
 # Duverger's Law
 
-In the US presidential elections we use a [first pass the the post][fptp] plural
+In the US presidential elections we use a [first pass the post][fptp] plural
 voting system. That is, one vote per voter for a single candidate. After all votes
 are cast the majority [usually][2000_election] wins. A side effect of this type
 of plural voting system is [Duverger's Law][duverger], which states that these
