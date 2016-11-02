@@ -61,7 +61,7 @@ your third party candidate while ensuring that the worst possible outcome is not
 a threat. Some cities and states have adopted this style of voting already.
 
 The only way out of our existing system is to change it. That'll require a
-constitutionl amendment. Rather than focusing on casting a protest vote, vote for
+constitutional amendment. Rather than focusing on casting a protest vote, vote for
 the lesser of two evils and spend your time trying to elect local congressional
 leaders that favor preferential voting.
 
